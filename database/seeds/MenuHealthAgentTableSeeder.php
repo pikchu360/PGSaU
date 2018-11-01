@@ -8,7 +8,7 @@ class MenuHealthAgentTableSeeder extends Seeder
     
     public function run()
     {
-                //Menu Principal (Raiz)	
+		//Menu Principal (Raiz)	
 		$m1 = factory(Menu::class)->create([
 			'etiqueta' => 'Inicio',
 			'pagina' => 'home',
@@ -27,7 +27,7 @@ class MenuHealthAgentTableSeeder extends Seeder
 		
 		$m3 = factory(Menu::class)->create([
 			'etiqueta' => 'Turnos',
-			'pagina' => 'shifts',
+			'pagina' => 'turns',
 			'padre' => 0,
 			'orden' => 2,
 			'role' => 'health_agent',

@@ -23,7 +23,7 @@ class MenuUserTableSeeder extends Seeder
 				
 		$m2 = factory(Menu::class)->create([
 			'etiqueta' => 'Turnos',
-			'pagina' => 'shifts',
+			'pagina' => 'turns',
 			'padre' => 0,
 			'orden' => 1,
 			'role' => 'patient',

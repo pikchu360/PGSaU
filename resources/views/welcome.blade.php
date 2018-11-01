@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Dirección de Salud Universitaria <br> U.N.Sa.
                 </div>
 
                 <div class="links">

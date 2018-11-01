@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@welcome');
 
 Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('users','PatientController');
+Route::resource('patients','PatientController');
+Route::resource('social_works','SocialWorkController');
+Route::resource('turns', 'TurnController');
+Route::resource('assists', 'AssistanceController');
+
+Route::get('{slug}', 'PageController@open');       //Al final. Es para abrir paginas a traves de cierto slug.

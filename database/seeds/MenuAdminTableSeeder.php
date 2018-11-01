@@ -10,8 +10,8 @@ class MenuAdminTableSeeder extends Seeder
     {
         //Menu Principal (Raiz)	
 		$m1 = factory(Menu::class)->create([
-			'etiqueta' => 'Inicio',
-			'pagina' => 'home',
+			'etiqueta' => 'Usuarios',
+			'pagina' => 'users',
 			'padre' => 0,
 			'orden' => 0,
 			'role' => 'admin',
@@ -27,7 +27,7 @@ class MenuAdminTableSeeder extends Seeder
 		
 		$m3 = factory(Menu::class)->create([
 			'etiqueta' => 'Turnos',
-			'pagina' => 'shifts',
+			'pagina' => 'turns',
 			'padre' => 0,
 			'orden' => 2,
 			'role' => 'admin',
