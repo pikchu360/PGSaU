@@ -1,9 +1,10 @@
 @extends('home')
 @section('content')
+<div class="container">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <center><h1><span class="badge badge-pill badge-info">Asistencia</span></h1></center>
+                <center><h1><span class="badge badge-pill badge-info">Inasistencias</span></h1></center>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('assists.create') }}"> Nuevo </a>
@@ -40,4 +41,5 @@
         @endforeach
     </table>
     {!! $assists->links() !!}
+</div>
 @endsection

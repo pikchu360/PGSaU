@@ -15,6 +15,11 @@ class CreatePatientsTable extends Migration
             $table->string('firstname');
             $table->integer('dni')->unique();
             $table->string('email');
+            $table->string('address');
+            $table->string('phone');
+            
+            //Implementar el historial.
+
             $table->timestamps();
         });
     }

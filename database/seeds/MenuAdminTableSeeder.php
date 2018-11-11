@@ -18,7 +18,7 @@ class MenuAdminTableSeeder extends Seeder
 		]);
 		
 		$m2 = factory(Menu::class)->create([
-			'etiqueta' => 'Pacientes',
+			'etiqueta' => 'Fichas Médica',
 			'pagina' => 'patients',
 			'padre' => 0,
 			'orden' => 1,
@@ -34,7 +34,7 @@ class MenuAdminTableSeeder extends Seeder
 		]);
 			
 		$m4 = factory(Menu::class)->create([
-			'etiqueta' => 'Asistencias',
+			'etiqueta' => 'Inasistencias',
 			'pagina' => 'assists',
 			'padre' => 0,
 			'orden' => 3,

@@ -1,30 +1,36 @@
 @extends('home')
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Paciente</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('patients.index') }}">Volver </a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Apellido:</strong>
-                {{ $patient->lastname }}
-            </div>
-            <div class="form-group">
-                <strong>Nombre:</strong>
-                {{ $patient->firstname }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                {{ $patient->email}}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header"><h2> Paciente</h2></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="">
+                            <strong>Apellido:</strong>
+                            {{ $patient->lastname }}
+                        </div>
+                        <div class="">
+                            <strong>Nombre:</strong>
+                            {{ $patient->firstname }}
+                        </div>
+                        <div class="">
+                            <strong>Email:</strong>
+                            {{ $patient->email}}
+                        </div>
+                        <div class="">
+                            <strong>Telefono:</strong>
+                            {{ $patient->phone }}
+                        </div>
+                        <div class="">
+                            <strong>Dirección:</strong>
+                            {{ $patient->address }}
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <a class="btn btn-primary" href="{{ route('patients.index') }}">Volver </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

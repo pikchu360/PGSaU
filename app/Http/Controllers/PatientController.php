@@ -8,8 +8,30 @@ use App\Patient;
 
 class PatientController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        
+        //========================================
+        //=========Para buscar un dato============
+
+        /*$firstname = $request->get('firstname');
+        $lastname  = $request->get('lastname');
+        $dni       = $request->get('dni');
+        $email     = $request->get('email');
+        $address   = $request->get('address');
+        $phone     = $request->get('phone');*/
+
+        //========================================
+
         $patients = Patient::latest()->paginate(5);
+        /*$patients = Patient::orderBy('id','desc')
+            ->LastName($lastname)
+            ->FirstName($firstname)
+            ->DNI($dni)
+            ->Email($email)
+            ->Address($address)
+            ->Phone($phone)
+        ->paginate(5);*/
+        
         if( Auth::User()->role == 'admin' ){
             return view('user_admin.patients.index', compact('patients'))->with('i', (request()->input('page', 1) - 1) * 5);
         }else{

@@ -1,5 +1,6 @@
 @extends('home')
 @section('content')
+<div class="container">
     <center><h1><span class="badge badge-pill badge-info">Turnos</span></h1></center>
     <br><br>
     <div id='calendar'></div>
@@ -56,4 +57,5 @@
             })
         });
     </script>
+</div>
 @endsection('content')

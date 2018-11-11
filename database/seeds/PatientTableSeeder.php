@@ -12,6 +12,8 @@ class PatientTableSeeder extends Seeder
         $patient->firstname = 'Goku';
         $patient->dni = '11222333';
         $patient->email = 'hame@gmail.com';
+        $patient->address = 'Distrito Este 439 (Montaña Paoz, Tierra)';
+        $patient->phone = '0387-155247923';
         $patient->save();
     }
 }

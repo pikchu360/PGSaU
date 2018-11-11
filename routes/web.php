@@ -16,7 +16,7 @@ Route::get('/', 'PageController@welcome');
 Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('users','PatientController');
+Route::resource('users','UserController');
 Route::resource('patients','PatientController');
 Route::resource('social_works','SocialWorkController');
 Route::resource('turns', 'TurnController');

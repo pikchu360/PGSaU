@@ -23,6 +23,18 @@
             {!! Form::text('email', null, array('placeholder'=>'Email','class'=>'form-control')) !!}
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Direccion:</strong>
+            {!! Form::text('address', null, array('placeholder'=>'Dirección','class'=>'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Telefono:</strong>
+            {!! Form::text('phone', null, array('placeholder'=>'Tel/Cel','class'=>'form-control')) !!}
+        </div>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
