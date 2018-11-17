@@ -13,13 +13,19 @@
 
 Route::get('/', 'PageController@welcome');
 
+Route::group(['middleware' => ['web']], function() {
+    Route::resource('patients','PatientController');
+    Route::POST('editPatient','PatientController@editPatient');
+});
+
 Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users','UserController');
-Route::resource('patients','PatientController');
+//Route::resource('patients','PatientController');
 Route::resource('social_works','SocialWorkController');
 Route::resource('turns', 'TurnController');
 Route::resource('assists', 'AssistanceController');
+
 
 Route::get('{slug}', 'PageController@open');       //Al final. Es para abrir paginas a traves de cierto slug.

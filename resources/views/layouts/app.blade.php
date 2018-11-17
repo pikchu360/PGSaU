@@ -8,7 +8,8 @@
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css" >
         <link rel="stylesheet" href="{{ asset('css/fullcalendar.min.css') }}"/>
-        
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
         <!-- Enlaces script -->
         <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
         <script src="{{ asset('js/jquery.js') }}"></script>
@@ -71,5 +72,8 @@
                 @yield('content')
             </main>
         </div>
+
+        <!-- JS para el manejo de datos entre los Modals de los CRUDs -->    
+        <script src="{{ asset('js/abms_cruds.js') }}"></script>
     </body>
 </html>

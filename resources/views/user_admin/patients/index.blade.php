@@ -7,7 +7,7 @@
             <center><h1><span class="badge badge-pill badge-info">Fichas</span></h1></center>
             </div>
             <div class="pull-right">
-                <a href="" class="btn btn-success" data-toggle="modal" data-target="#addModal">Agregar</a>
+                <a class="btn btn-success" data-toggle="modal" data-target="#addModal">Agregar</a>
                 <!--a class="btn btn-success" href="{{ route('patients.create') }}"> Nuevo </a-->
             </div>
         </div>
@@ -26,24 +26,42 @@
             <th width="230px">Acciones</th>
         </tr>
         @foreach ($patients as $patient)
-        <tr>
+        <tr class="patients{{$patient->id}}">
             <td>{{ ++$i }}</td>
             <td>{{ $patient->lastname }}</td>
             <td>{{ $patient->firstname }}</td>
             <td>{{ $patient->dni}}</td>
             <td>
-                <a class="btn btn-info" href="{{ route('patients.show',$patient->id) }}">Ver</a>
-                <a class="btn btn-primary" href="{{ route('patients.edit',$patient->id) }}">Editar</a>
+                <a href=# class="show-modal btn btn-primary btn-sm" 
+                    data-id         =   "{{ $patient->id }}" 
+                    data-lastname   =   "{{ $patient->lastname }}"
+                    data-firstname  =   "{{ $patient->firstname }}"
+                    data-dni        =   "{{ $patient->dni }}"
+                    data-email      =   "{{ $patient->email }}"
+                    data-address    =   "{{ $patient->address }}"
+                    data-phone      =   "{{ $patient->phone }}"
+                ><i class="icon-eye"></i></a>
+                <a href="#" class="edit-modal btn btn-success btn-sm" 
+                    data-id         =   "{{ $patient->id }}" 
+                    data-lastname   =   "{{ $patient->lastname }}"
+                    data-firstname  =   "{{ $patient->firstname }}"
+                    data-dni        =   "{{ $patient->dni }}"
+                    data-email      =   "{{ $patient->email }}"
+                    data-address    =   "{{ $patient->address }}"
+                    data-phone      =   "{{ $patient->phone }}"
+                ><i class="icon-pencil1"></i></a>
+                
                 {!! Form::open(['method' => 'DELETE','route' => ['patients.destroy', $patient->id],'style'=>'display:inline']) !!}
-                {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
+                <button type="submit" class="btn btn-danger icon-trashcan"></button>
                 {!! Form::close() !!}
             </td>
         </tr>
         @endforeach
     </table>
 
-    @include('user_admin.modals.patient_modal_add')
-    @include('user_admin.modals.patient_modal_info')
+    @include('user_admin.patients.create')
+    @include('user_admin.patients.edit')
+    @include('user_admin.patients.show')
 
     {!! $patients->links() !!}
 </div>

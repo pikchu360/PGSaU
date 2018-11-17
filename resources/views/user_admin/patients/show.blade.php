@@ -1,37 +1,41 @@
-@extends('home')
-@section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header"><h2> Paciente</h2></div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <div class="">
-                            <strong>Apellido:</strong>
-                            {{ $patient->lastname }}
-                        </div>
-                        <div class="">
-                            <strong>Nombre:</strong>
-                            {{ $patient->firstname }}
-                        </div>
-                        <div class="">
-                            <strong>Email:</strong>
-                            {{ $patient->email}}
-                        </div>
-                        <div class="">
-                            <strong>Telefono:</strong>
-                            {{ $patient->phone }}
-                        </div>
-                        <div class="">
-                            <strong>Dirección:</strong>
-                            {{ $patient->address }}
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <a class="btn btn-primary" href="{{ route('patients.index') }}">Volver </a>
-                    </div>
+<div class="modal fade" id="show" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ficha Médica</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group">
+                    <label for="lastname" class="col-md-4 col-form-label text-md-right">Apellido:</label>
+                    <b id="p_lastname" class="col-md-6"></b>
                 </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-md-4 col-form-label text-md-right">Nombre:</label>
+                    <b id="p_firstname" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="dni" class="col-md-4 col-form-label text-md-right">DNI:</label>
+                    <b id="p_dni" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-md-4 col-form-label text-md-right">Email:</label>
+                    <b id="p_email" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-md-4 col-form-label text-md-right">Dirección:</label>
+                    <b id="p_address" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-md-4 col-form-label text-md-right">Telefono:</label>
+                    <b id="p_phone" class="col-md-6"></b>
+                </div>                           
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
             </div>
         </div>
     </div>
-@endsection
+</div>

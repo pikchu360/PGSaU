@@ -8,7 +8,7 @@ use App\Patient;
 
 class PatientController extends Controller
 {
-    public function index(Request $request){
+    public function index(){
         
         //========================================
         //=========Para buscar un dato============
@@ -108,6 +108,19 @@ class PatientController extends Controller
                 return redirect()->route('patients.index')->with('succes','Paciente actualizado éxitosamente!!!');
             }
         }
+    }
+
+    //Funcion agregada para controlar el update desde un modal.
+    function editPatient(Request $request){
+        $patient = Patient::find ($request->id);
+        $patient->lastname = $request->lastname;
+        $patient->firstname = $request->firstname;
+        $patient->dni = $request->dni;
+        $patient->email = $request->email;
+        $patient->address = $request->address;
+        $patient->phone = $request->phone;
+        $patient->save();
+        return response()->json($patient);
     }
 
     public function destroy($id){
