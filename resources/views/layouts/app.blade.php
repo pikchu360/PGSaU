@@ -16,11 +16,22 @@
         <script src="{{ asset('js/moment.min.js') }}"></script>
         <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
 
+        <!-- JS para el manejo de datos entre los Modals de los CRUDs -->    
+        <script src="{{ asset('js/abm_user.js') }}"></script>
+        <script src="{{ asset('js/abm_patient.js') }}"></script>
+        <script src="{{ asset('js/abm_license.js') }}"></script>
+
+        <style>
+            .bg-image {
+                background-image: url('../images/background/bg-body.jpg');
+            }
+        </style>
     </head>
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-                <div class="container">            
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+                <div class="container">     
+                    <a class="navbar-brand btn btn-outline-primary" href="/">Inicio</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -53,7 +64,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                        document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
 
@@ -68,12 +79,15 @@
                 </div>
             </nav>
 
-            <main class="py-4">
-                @yield('content')
+            <main class="py-4 bg-image">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        @yield('content')
+                    </div>
+                </div>
             </main>
         </div>
-
-        <!-- JS para el manejo de datos entre los Modals de los CRUDs -->    
-        <script src="{{ asset('js/abms_cruds.js') }}"></script>
     </body>
+    <footer style="background: black;">
+    </footer>
 </html>

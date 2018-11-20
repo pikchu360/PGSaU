@@ -1,13 +1,41 @@
-<div class="modal fade" id="edit" role="dialog">
+@extends('home')
+@section('content')
+<div class="card bg-home" style="width: 35rem; background-color: #d5f5e3 ; ">
+    <div class="card-header bg-success">
+            <center><h1><span class="text-white icon-profile">Editar Ficha</span></h1></center>
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    </div>
+    <div class="card-body">
+        {!! Form::model($patient,['method'=>'PATCH','route'=>['patients.update', $patient->id]]) !!}
+            @include('user_admin.patients.form')
+            <div class="float-right">
+                <a class="btn btn-secondary icon-cancel" href="{{ route('patients.index') }}">Cancelar</a>
+                <button class="btn btn-success icon-checkmark" type="submit">Actualizar</button>
+            </div>   
+        {!! Form::close() !!}
+    </div>
+</div>
+@endsection
+
+<!--div class="modal fade" id="edit" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ficha Médica</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal-header bg-success">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Ficha Médica</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-light">
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -19,12 +47,6 @@
                 </div>
                 @endif
                 <form class="form-horizontal" role="modal">  
-                 <!-- {!! Form::model($patient,['method'=>'PATCH','route'=>['patients.update', $patient->id]]) !!} -->
-                    <label for=""> 
-                        {{ $patient->id }} <br>
-                        <input id="i_id" disabled>
-                        <b id="b_id"></b>
-                    </label>
                     <div class="form-group">
                         <label for="lastname" class="col-md-4 col-form-label text-md-right">Apellido:</label>
                         <input id="i_lastname" class="col-md-6">
@@ -51,16 +73,14 @@
                     </div>                           
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success" href="google.com">Aceptar</button>
-                <!--button type="button" class="btn btn-warning" data-dismiss="modal">
-                <span class="glyphicon glyphicon"></span>Cancelar
-                </button-->
+            <div class="modal-footer bg-dark">
+                <button type="button" class="btn btn-secondary icon-cancel" data-dismiss="modal">
+                    <span class="glyphicon glyphicon">Cancelar</span>
+                </button>
                 <button type="button" class="btn actionBtn" data-dismiss="modal">
-                    <span id="footer_action_button" class="glyphicon"></span>
+                    <span id="footer_action_button" class="icon-checkmark"></span>
                 </button>   
             </div>
-            <!-- {!! Form::close() !!} -->
         </div>
     </div>
-</div>
+</div-->

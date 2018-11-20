@@ -1,6 +1,9 @@
 @extends('home')
 @section('content') 
-    @if (count($errors) < 0)
+<div class="card bg-home" style="width: 35rem; background-color: #d5f5e3 ; ">
+    <div class="card-header bg-success" >
+        <center><h1><span class="text-white icon-user">Crear Usuario</span></h1></center>
+        @if (count($errors) < 0)
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
             <ul>
@@ -9,9 +12,12 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+        @endif
+    </div>
+    <div class="card-body">
     {!! Form::open( ['method' => 'POST', 'route' => ['users.store']]) !!}
-        <center><h2>Agregar Usuario Nuevo</h2></center>
         @include('user_admin.users.form_register')
-    {!! Form::close() !!}
+    {!! Form::close() !!}  
+    </div>
+</div>
 @endsection

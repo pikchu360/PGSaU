@@ -89,6 +89,14 @@ class MenuAdminTableSeeder extends Seeder
 			'padre' => $m5->id,
 			'orden' => 3,
 			'role' => 'admin',
+		]);
+		
+		factory(Menu::class)->create([
+			'etiqueta' => 'Tipos de Licencias',
+			'pagina' => 'licenses',
+			'padre' => $m5->id,
+			'orden' => 4,
+			'role' => 'admin',
         ]);
         
         //Sub-menu nivel 1 (Hijo de más)

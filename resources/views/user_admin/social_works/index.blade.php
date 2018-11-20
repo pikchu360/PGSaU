@@ -1,7 +1,7 @@
 @extends('home')
 @section('content')
-<div class="container">
-    <div class="row">
+<div class="card bg-home" style="width: 100rem; background-color: #d5f5e3 ; ">
+    <div class="card-header">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>CRUD Obras Sociales</h2>
@@ -16,7 +16,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <table class="table table-bordered">
+    <table class="card-body table table-bordered">
         <tr>
             <th>Nro</th>
             <th>Nombre</th>

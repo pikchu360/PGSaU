@@ -1,13 +1,10 @@
 @extends('home')
 @section('content')
-<div class="container">
-    <div class="row">
+<div class="card bg-home" style="width: 100rem; background-color: #d5f5e3 ; ">
+    <div class="card-header">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <center><h1><span class="badge badge-pill badge-info">Inasistencias</span></h1></center>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('assists.create') }}"> Nuevo </a>
             </div>
         </div>
     </div>
@@ -18,18 +15,28 @@
     @endif
     <table class="table table-bordered">
         <tr>
-            <th>Nro</th>
+            <th>N° de DNI</th>
             <th>Apellido</th>
             <th>Nombres</th>
-            <th>Email</th>
-            <th width="280px">Acciones</th>
+            <th>Tipo de Licencia</th>
+            <th width="280px">Acciones
+                <a class="btn btn-warning icon-plus" data-toggle="modal" data-target="#search-modal"></a>
+            </th>
         </tr>
         @foreach ($assists as $assistance)
-        <tr>
-            <td>{{ ++$i }}</td>
-            <td>{{ $assistance->lastname }}</td>
-            <td>{{ $assistance->firstname }}</td>
-            <td>{{ $assistance->email}}</td>
+        <tr>  
+            @foreach ($pat as $paty)
+                @if ($paty->id == $assistance->patient_id)
+                    <td>{{ $paty->dni }} </td>        
+                    <td>{{ $paty->lastname }} </td>
+                    <td>{{ $paty->firstname }} </td>
+                @endif
+            @endforeach
+            @foreach ($lic as $lics)
+                @if ($lics->id == $assistance->license_id)
+                    <td>{{ $lics->name }} </td>
+                @endif
+            @endforeach
             <td>
                 <a class="btn btn-info" href="{{ route('assists.show',$assistance->id) }}">Ver</a>
                 <a class="btn btn-primary" href="{{ route('assists.edit',$assistance->id) }}">Editar</a>
@@ -41,5 +48,6 @@
         @endforeach
     </table>
     {!! $assists->links() !!}
+    @include('user_admin.assists.search_patient')
 </div>
 @endsection

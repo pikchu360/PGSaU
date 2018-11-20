@@ -13,19 +13,25 @@
 
 Route::get('/', 'PageController@welcome');
 
-Route::group(['middleware' => ['web']], function() {
+/*Route::group(['middleware' => ['web']], function() {
     Route::resource('patients','PatientController');
     Route::POST('editPatient','PatientController@editPatient');
-});
+
+    //Route::resource('licenses', 'LicenseController');
+    //Route::POST('editLicense', 'LicenseController@editLicense');
+});*/
 
 Auth::routes();
-//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('createInassist/{id}','AssistanceController@createInassist')->name('createInassist');
+
+Route::resource('images', 'ImagenController');
 
 Route::resource('users','UserController');
-//Route::resource('patients','PatientController');
+Route::resource('patients','PatientController');
 Route::resource('social_works','SocialWorkController');
 Route::resource('turns', 'TurnController');
 Route::resource('assists', 'AssistanceController');
-
+Route::resource('licenses', 'LicenseController');
 
 Route::get('{slug}', 'PageController@open');       //Al final. Es para abrir paginas a traves de cierto slug.

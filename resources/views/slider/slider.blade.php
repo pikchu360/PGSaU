@@ -7,8 +7,8 @@
     </ol>
     <div class='carousel-inner'>
         @foreach($slides as $item)
-            <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
-                <center><img src="{{ url($item->url) }}" alt="{{ $item->title }}" style="margin: auto;" heigth=512 width=1024></center>
+            <div class="carousel-item {{ $loop->first ? ' active' : '' }}" style="border-color: white;">
+                <center><img src="{{ url($item->url) }}" alt="{{ $item->title }}" style="margin: auto;" height=512 width=1024></center>
                 <div class="carousel-caption">
                     <h1 style="color:#2e86c1; text-shadow: 5px 5px 5px black;">{{ $item->title }}</h1>
                     <h3 style="color:white; text-shadow: 5px 5px 5px black;">{{ $item->description}}</h3>
@@ -26,4 +26,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
 </a>
+<div id="editSlider">
+    <a href="{{ route('images.index') }}">Editar Slider</a>
+</div>
 <!-- End Carousel Controls -->

@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MenuHealthAgentTableSeeder::class);
         $this->call(PatientTableSeeder::class);
         $this->call(SocialWorkTableSeeder::class);
+        $this->call(ImageTableSeeder::class);
+        $this->call(LicenseTableSeeder::class);
     }
 }

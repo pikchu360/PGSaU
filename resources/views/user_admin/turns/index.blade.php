@@ -1,6 +1,6 @@
 @extends('home')
 @section('content')
-<div class="container">
+<div class="card bg-home" style="width: 100rem; background-color: #eafaf1; ">
     <center><h1><span class="badge badge-pill badge-info">Turnos</span></h1></center>
     <br><br>
     <div id='calendar'></div>

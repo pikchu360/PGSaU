@@ -4,13 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Assistance extends Model
+class License extends Model
 {
     protected $fillable = [
         'id',
-        'patient_id',
-        'license_id',
-        'start_date',
-        'end_date',
+        'name',
+        'description',
+        'days',
     ];
 }
