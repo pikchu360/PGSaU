@@ -15,13 +15,15 @@
         @endif
     </div>
     <div class="card-body">
-        {!! Form::model($lic,['method'=>'PATCH','route'=>['licenses.update', $lic->id]]) !!}    
-            @include('user_admin.licenses.form')
-            <div class="float-right">
-                <a class="btn btn-secondary icon-cancel" href="{{ route('licenses.index') }}">Cancelar</a>
-                <button class="btn btn-success icon-checkmark" type="submit">Actualizar</button>
-            </div>
-        {!! Form::close() !!}
+    {!! Form::model($lic,['method'=>'PATCH','route'=>['licenses.update', $lic->id]]) !!}    
+        @include('user_admin.licenses.form')
     </div>
+    <div class="card-footer bg-dark">
+        <div class="float-right">
+            <a class="btn btn-secondary icon-cancel" href="{{ route('licenses.index') }}">Cancelar</a>
+            <button class="btn btn-success icon-checkmark" type="submit">Actualizar</button>
+        </div>        
+    </div>
+    {!! Form::close() !!}
 </div>
 @endsection

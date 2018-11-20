@@ -27,7 +27,7 @@
     <div class="col-md-6">
         <select id="license_id" name="license_id" class="form-control" onchange="ShowSelected();">  
             <option selected="true" disabled="disabled">Tipo de licencia</option>
-            @foreach($lic as $tlic)
+            @foreach($license as $tlic)
             <option value="{{ $tlic->id }}">{{ $tlic->name }} </option>
             @endforeach
         </select>
@@ -58,7 +58,7 @@
         var combo = document.getElementById("license_id"); 
         var selected = combo.options[combo.selectedIndex].text; 
         var licenses = [
-            @foreach ($lic as $t_lice)
+            @foreach ($license as $t_lice)
                 ["{{$t_lice->name}}","{{$t_lice->days}}"],
             @endforeach
                     

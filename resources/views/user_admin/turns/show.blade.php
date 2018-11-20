@@ -1,17 +1,20 @@
 @extends('home')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Evento </h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('turns.index') }}">Volver </a>
-            </div>
+<div class="card bg-home" style="width: 35rem; background-color: #d5f5e3 ; ">
+    <div class="card-header bg-primary">
+            <center><h1><span class="text-white icon-calendar1">Turno</span></h1></center>
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
+        @endif
     </div>
-    <div class="row">
+    <div class="card-body">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Titulo:</strong>
@@ -28,12 +31,15 @@
                 {{ $turn->turn_date }}
             </div>
         </div>
-        <div class="">
-            <a class="btn btn-primary" href="{{ route('turns.edit',$turn->id) }}">Editar</a>
+     </div>
+     <div class="card-footer bg-dark">
+        <div class="float-right">
+            <a class="btn btn-primary icon-arrow-left" href="{{ route('turns.index') }}"></a>
+            <a class="btn btn-success icon-pencil1" href="{{ route('turns.edit',$turn->id) }}"></a>
             {!! Form::open(['method' => 'DELETE','route' => ['turns.destroy', $turn->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
+            <button type="submit" class="btn btn-danger icon-trashcan"></button>
             {!! Form::close() !!}
-        </div>
-    </div>
+        </div>   
+     </div>
 </div>
 @endsection

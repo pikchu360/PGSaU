@@ -1,27 +1,21 @@
-@extends('home')
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Obra Social</h2>
+<div class="modal fade" id="show" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content-lg">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Licencia</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('social_works.index') }}">Volver </a>
+            <div class="modal-body bg-light">
+               <div class="form-group">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Nombre O.Social:</label>
+                    <b id="p_name" class="col-md-6"></b>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Id:</strong>
-                {{ $social_work->id}}
-            </div>
-            <div class="form-group">
-                <strong>Nombre:</strong>
-                {{ $social_work->name}}
+            <div class="modal-footer bg-dark">
+            <button type="button" class="btn btn-light text-primary" data-dismiss="modal">Aceptar</button>
             </div>
         </div>
     </div>
 </div>
-@endsection

@@ -20,6 +20,7 @@
         <script src="{{ asset('js/abm_user.js') }}"></script>
         <script src="{{ asset('js/abm_patient.js') }}"></script>
         <script src="{{ asset('js/abm_license.js') }}"></script>
+        <script src="{{ asset('js/abm_social_work.js') }}"></script>
 
         <style>
             .bg-image {

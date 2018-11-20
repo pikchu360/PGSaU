@@ -25,23 +25,25 @@
         </tr>
         @foreach ($assists as $assistance)
         <tr>  
-            @foreach ($pat as $paty)
-                @if ($paty->id == $assistance->patient_id)
-                    <td>{{ $paty->dni }} </td>        
-                    <td>{{ $paty->lastname }} </td>
-                    <td>{{ $paty->firstname }} </td>
+            @foreach ($patient as $pat)
+                @if ($pat->id == $assistance->patient_id)
+                    <td>{{ $pat->dni }} </td>        
+                    <td>{{ $pat->lastname }} </td>
+                    <td>{{ $pat->firstname }} </td>
                 @endif
             @endforeach
-            @foreach ($lic as $lics)
-                @if ($lics->id == $assistance->license_id)
-                    <td>{{ $lics->name }} </td>
+            @foreach ($license as $lic)
+                @if ($lic->id == $assistance->license_id)
+                    <td>{{ $lic->name }} </td>
                 @endif
             @endforeach
             <td>
-                <a class="btn btn-info" href="{{ route('assists.show',$assistance->id) }}">Ver</a>
-                <a class="btn btn-primary" href="{{ route('assists.edit',$assistance->id) }}">Editar</a>
+                <a class="btn btn-primary btn-sm" href="{{ route('assists.show',$assistance->id) }}">
+                <i class="icon-eye"></i></a>
+                <a href="{{ route('assists.edit', $assistance->id) }}" class="btn btn-success btn-sm">
+                <i class="icon-pencil1"></i></a>
                 {!! Form::open(['method' => 'DELETE','route' => ['assists.destroy', $assistance->id],'style'=>'display:inline']) !!}
-                {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
+                <button type="submit" class="btn btn-danger icon-trashcan"></button>
                 {!! Form::close() !!}
             </td>
         </tr>

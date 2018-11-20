@@ -13,10 +13,10 @@ class AssistanceController extends Controller
 {
     public function index(){
         $assists = Assistance::latest()->paginate(5);
-        $lic = License::all();
-        $pat = Patient::all();
+        $license = License::all();
+        $patient = Patient::all();
         if( Auth::User()->role == 'admin' ){
-            return view('user_admin.assists.index', compact('pat', 'assists', 'lic'))->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('user_admin.assists.index', compact('patient', 'assists', 'license'))->with('i', (request()->input('page', 1) - 1) * 5);
         }else{
             if(Auth::User()->role == 'health_agent' ){
                 return view('user_sanitary.assists.index', compact('assists'))->with('i', (request()->input('page', 1) - 1) * 5);
@@ -36,12 +36,10 @@ class AssistanceController extends Controller
     }
 
     public function store(Request $request){
-        /*request()->validate([
-            'patient_id' => 'required',
-            'license_id' => 'required',
+        request()->validate([
             'start_date' => 'required',
             'end_date' => 'required',
-        ]);*/
+        ]);
         //Assistance::create($request->all());
         $assist = new Assistance();
         $assist->patient_id = $request->input('patient_id');
@@ -60,14 +58,16 @@ class AssistanceController extends Controller
 
     public function createInassist($id){
         $patient = Patient::find($id);
-        $lic = License::all();
-        return view('user_admin.assists.create', compact('patient','lic'));
+        $license = License::all();
+        return view('user_admin.assists.create', compact('patient','license'));
     }
 
     public function show($id){
         $assistance = Assistance::find($id);
+        $patient = Patient::find($assistance->patient_id);
+        $license = License::find($assistance->license_id);
         if(Auth::User()->role == 'admin'){
-            return view('user_admin.assists.show', compact('assistance'));
+            return view('user_admin.assists.show', compact('assistance','patient','license'));
         }else{
             if(Auth::User()->role == 'health_agent'){
                 return view('user_sanitary.assists.show', compact('assistance'));
@@ -77,8 +77,11 @@ class AssistanceController extends Controller
 
     public function edit($id){
         $assistance = Assistance::find($id);
+        $patient = Patient::find($assistance->patient_id);
+        $license1 = License::find($assistance->license_id);
+        $license = License::all();
         if(Auth::User()->role == 'admin'){
-            return view('user_admin.assists.edit', compact('assistance'));
+            return view('user_admin.assists.edit', compact('assistance','patient','license', 'license1'));
         }else{
             if(Auth::User()->role == 'health_agent'){
                 return view('user_sanitary.assists.edit', compact('assistance'));
@@ -88,10 +91,8 @@ class AssistanceController extends Controller
 
     public function update(Request $request, $id){
         request()->validate([
-            'lastname' => 'required',
-            'firstname' => 'required',
-            'dni' => 'required',
-            'email' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
         ]);
         Assistance::find($id)->update($request->all());
         if(Auth::User()->role == 'admin'){

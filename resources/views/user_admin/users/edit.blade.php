@@ -15,13 +15,15 @@
         @endif
     </div>
     <div class="card-body">
-        {!! Form::model($user,['method'=>'PATCH','route'=>['users.update', $user->id]]) !!}
-            @include('user_admin.users.form')
-            <div class="float-right">
-                <a class="btn btn-secondary icon-cancel" href="{{ route('users.index') }}">Cancelar</a>
-                <button class="btn btn-success icon-checkmark" type="submit">Actualizar</button>
-            </div>
-        {!! Form::close() !!}
+    {!! Form::model($user,['method'=>'PATCH','route'=>['users.update', $user->id]]) !!}
+        @include('user_admin.users.form')
     </div>
+    <div class="card-footer bg-dark">
+        <div class="float-right">
+            <a class="btn btn-secondary icon-cancel" href="{{ route('users.index') }}">Cancelar</a>
+            <button class="btn btn-success icon-checkmark" type="submit">Actualizar</button>
+        </div>
+    </div>
+    {!! Form::close() !!}
 </div>
 @endsection

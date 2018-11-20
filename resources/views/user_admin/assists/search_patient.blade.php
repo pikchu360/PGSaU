@@ -47,15 +47,15 @@
                             <a class="btn btn-warning icon-plus" href="{{ route('patients.index') }}"></a>
                         </th>
                     </tr>
-                    @foreach ($pat as $patient)
+                    @foreach ($patient as $pat)
                     <tr>
-                        <td>{{ $patient->id }}</td>
-                        <td>{{ $patient->dni }}</td>
-                        <td>{{ $patient->lastname }}</td>
-                        <td>{{ $patient->firstname }}</td>
-                        <td>{{ $patient->email}}</td>
+                        <td>{{ $pat->id }}</td>
+                        <td>{{ $pat->dni }}</td>
+                        <td>{{ $pat->lastname }}</td>
+                        <td>{{ $pat->firstname }}</td>
+                        <td>{{ $pat->email}}</td>
                         <td>
-                            <a class="btn btn-success icon-checkmark" href="{{ route('createInassist', $patient->id) }}">Ok</a>
+                            <a class="btn btn-success icon-checkmark" href="{{ route('createInassist', $pat->id) }}">Ok</a>
                         </td>
                     </tr>
                     @endforeach
