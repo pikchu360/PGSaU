@@ -10,7 +10,7 @@ class MenuHealthAgentTableSeeder extends Seeder
     {
 		//Menu Principal (Raiz)	
 		$m1 = factory(Menu::class)->create([
-			'etiqueta' => 'Inicio',
+			'etiqueta' => 'Galeria',
 			'pagina' => 'home',
 			'padre' => 0,
 			'orden' => 0,
@@ -48,14 +48,6 @@ class MenuHealthAgentTableSeeder extends Seeder
 			'orden' => 4,
 			'role' => 'health_agent',
 		]);
-
-		$m6 = factory(Menu::class)->create([
-			'etiqueta' => 'Mas',
-			'pagina' => 'more',
-			'padre' => 0,
-			'orden' => 5,
-			'role' => 'health_agent',
-		]);		
 
     	//Sub-Menus nivel 1 (Hijos de Novedades)
 		factory(Menu::class)->create([

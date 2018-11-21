@@ -1,48 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+@extends('home')
+@section('content')
+    <center><h1><span class="badge badge-pill badge-info">Asistencia</span></h1></center>
+    <br><br>
+    <div id='calendar'></div>
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fullcalendar.min.css') }}"/>
-
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
-
-</head>
-<body>
-<h3>Calendario</h3>
-    <div id='calendar'>
-    </div>
     <script>
+        var m=moment();
         $(document).ready(function(){
             $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
                 events : [
-                    @foreach($turns as $turn) {
-                        title : "{{ $turn->name }}",
-                        start : '{{ $turn->turn_date }}',
+                    @foreach($assists as $assistance) {
+                        title : "{{ $assistance->name }}",
+                        start : '{{ $assistance->assistance_date }}',
                         color : 'black',
                         backgroundColor : ' #58d68d ',
                         textColor: 'white',
-                        url : "{{ route('shifts.show', $turn->id ) }}"
+                        url : "{{ route('assistances.show', $assistance->id ) }}"
                     },
                     @endforeach
                 ],
+
                 dayClick: function(date, jsEvent, view){
-                    window.location.replace("/shifts.create?date="+date.format());
+                    
+                    if(date.format() >= m.format('YYYY-MM-DD')){
+                        window.location.replace("assistances/create?date="+date.format());
+                    }else{
+                        alert('Por Favor, elija una fecha correcta! Mayor o igual a ' + m.format('DD-MM-YYYY'))
+                    }
+                },
+
+                businessHours: [
+                    {
+                        start: '8:00', // hora final
+                        end: '18:00', // hora inicial
+                        dow: [ 1, 2, 3, 4, 5 ] // dias de semana, 0=Domingo
+                    },
+                    {
+                        start: '8:00', // hora final
+                        end: '12:00', // hora inicial
+                        dow: [ 6 ] // dias de semana, 0=Domingo
+                    },
+                ],
+                dayRender: function (date, cell) {
+                    if(date.format() < m.format('YYYY-MM-DD')){
+                        cell.css("background-color", " #f5b7b1");
+                    }
                 },
             })
         });
-</script>
-</body>
-</html>
+    </script>
+@endsection('content')

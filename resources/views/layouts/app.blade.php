@@ -23,8 +23,11 @@
         <script src="{{ asset('js/abm_social_work.js') }}"></script>
 
         <style>
+            body {
+                background-image: url('../images/background/bg-body3.jpg');
+            }
             .bg-image {
-                background-image: url('../images/background/bg-body.jpg');
+                /*background-image: url('../images/background/bg-body3.jpg');*/
             }
         </style>
     </head>
@@ -32,7 +35,7 @@
         <div id="app">
             <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div class="container">     
-                    <a class="navbar-brand btn btn-outline-primary" href="/">Inicio</a>
+                    <a class="navbar-brand btn btn-outline-primary" href="/">Gral.</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -89,6 +92,6 @@
             </main>
         </div>
     </body>
-    <footer style="background: black;">
+    <footer class="bg-dark">
     </footer>
 </html>

@@ -1,4 +1,3 @@
-<form method="POST" action="{{ route('users.index') }}">
     @csrf
     <div class="form-group row">
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -38,8 +37,3 @@
             {!! Form::select('role', array_pluck($roles, 'description', 'name')) !!}
         </div>
     </div>
-    <div class="col-md-6 offset-md-4">
-        <a class="btn btn-secondary icon-cancel" href="{{ route('users.index') }}">Volver</a>
-        <button type="submit" class="btn btn-success icon-checkmark">Registrar</button>
-    </div>
-</form>

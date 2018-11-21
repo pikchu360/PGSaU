@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Image;
 
 class ImageController extends Controller
 {
     public function index()
     {
         $imagen = Image::where('users_id',Auth::user()->id)->get();   
-        return view('images.index')->with('images',$imagen);
+        return view('imagenes.index', compact('imagen'))->with('images',$imagen);
     }
     
     public function edit($id)
     {
         $imagen = Image::find($id);
-        return view('images.edit',compact('imagen'));
+        return view('imagenes.edit',compact('imagen'));
     }
     
     public function update(Request $request, $id)
@@ -25,14 +28,12 @@ class ImageController extends Controller
         $imagene->descripcion = $request->input('description');
       //  $imagene->estado = $request->input('estado');
         $imagene->save();
-        return redirect()->route('images.index')->with('success','Actividad modificada successfully');
+        return redirect()->route('imagenes.index')->with('success','Actividad modificada successfully');
     }
 
     public function destroy($id)
     {
-        $imagen = Image::find($id);
-        Storage::delete($imagen->name);
         Image::find($id)->delete();
-        return redirect()->route('images.index')->with('success','Actividad deleted successfully');
+        return redirect()->route('imagenes.index')->with('success','Actividad deleted successfully');
     }
 }

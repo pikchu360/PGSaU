@@ -19,7 +19,7 @@
             <th>Email</th>
             <th>Tipo de Cuenta</th>
             <th width="240px">Acciones
-                <a class="btn btn-warning icon-plus" href="{{ route('users.create') }}"></a>
+                <a class="btn btn-warning icon-plus" data-toggle="modal" data-target="#add-user-modal"></a>
             </th>
         </tr>
         @foreach ($users as $user)
@@ -46,7 +46,7 @@
         @endforeach
     </table>
     {!! $users->links() !!}
-
+    @include('user_admin.users.create')
     @include('user_admin.users.show')
 </div>
 @endsection

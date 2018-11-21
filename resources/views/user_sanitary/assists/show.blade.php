@@ -1,38 +1,50 @@
 @extends('home')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Evento </h2>
+<div class="card bg-home" style="width: 40rem; background-color: #d5f5e3 ;">
+    <div class="card-header bg-primary">
+        <center><h1><span class="text-white icon-user">Solicitud</span></h1></center>
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <label for="lastname" class="col-md-4 col-form-label text-md-right">Apellido:</label>
+            <div class="col-md-6">
+                <label id="lastname" class="form-control">{{ $patient->lastname }}</label>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('turns.index') }}">Volver </a>
+        </div>
+        <div class="form-group row">
+            <label for="firstname" class="col-md-4 col-form-label text-md-right">Nombre:</label>
+            <div class="col-md-6">
+                <label id="firstname" class="form-control">{{ $patient->firstname }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="dni" class="col-md-4 col-form-label text-md-right">N° de DNI:</label>
+            <div class="col-md-6">
+                <label for="dni" class="form-control">{{ $patient->dni }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="tlic" class="col-md-4 col-form-label text-md-right">Tipo de Licencia:</label>
+            <div class="col-md-6">
+                <label for="tlic" class="form-control">{{ $license->name }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label text-md-right">Fecha Inicial:</label>
+            <div class="col-md-6">
+                <label class="form-control" >{{ $assistance->start_date }}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label text-md-right">Fecha Final:</label>
+            <div class="col-md-6">
+                <label class="form-control" >{{ $assistance->end_date }}</label>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Titulo:</strong>
-                {{ $turn->name }}
-            </div>
-            <div class="form-group">
-                <strong>Descripcion:</strong>
-                {{ $turn->description }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Fecha:</strong>
-                {{ $turn->turn_date }}
-            </div>
-        </div>
-        <div class="">
-            <a class="btn btn-primary" href="{{ route('turns.edit',$turn->id) }}">Editar</a>
-            {!! Form::open(['method' => 'DELETE','route' => ['turns.destroy', $turn->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
-            {!! Form::close() !!}
+    <div class="card-footer bg-dark">
+        <div class="float-right">
+            <a class="btn btn-primary icon-arrow-left" href="{{route('assists.index')}}">volver</a>
         </div>
     </div>
 </div>

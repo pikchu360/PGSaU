@@ -16,6 +16,8 @@ class TurnController extends Controller
         }else{
             if( Auth::User()->role == 'health_agent'){
                 return view('user_sanitary.turns.index', compact('turns'));
+            }else{
+                return view('user_patients.turns.index', compact('turns'));
             }
         }
     }
@@ -26,6 +28,8 @@ class TurnController extends Controller
         }else{
             if(Auth::User()->role == 'health_agent'){
                 return view('user_sanitary.turns.create');
+            }else{
+                return view('user_patients.turns.create');
             }
         }
     }
@@ -42,6 +46,8 @@ class TurnController extends Controller
         }else{
             if(Auth::User()->role == 'health_agent'){
                 return view('user_sanitary.turns.show', compact('turn'));
+            }else{
+                return view('user_patients.turns.show', compact('turn'));
             }
         }
     }
@@ -53,6 +59,8 @@ class TurnController extends Controller
         }else{
             if(Auth::User()->role == 'health_agent'){
                 return view('user_sanitary.turns.edit', compact('turn'));
+            }else{
+                return view('user_patients.turns.edit', compact('turn'));
             }
         }
     }
@@ -66,6 +74,8 @@ class TurnController extends Controller
             return redirect()->route('turns.index')->with('succes','Turno actualizado éxitosamente!!!');
         }else{
             if(Auth::User()->role == 'health_agent'){
+                return redirect()->route('turns.index')->with('succes','Turno actualizado éxitosamente!!!');
+            }else{
                 return redirect()->route('turns.index')->with('succes','Turno actualizado éxitosamente!!!');
             }
         }

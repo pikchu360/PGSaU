@@ -1,59 +1,55 @@
 @extends('home')
 @section('content')
-    <center><h1><span class="badge badge-pill badge-info">Turnos</span></h1></center>
-    <br><br>
-    <div id='calendar'></div>
-
-    <script>
-        var m=moment();
-        $(document).ready(function(){
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'agendaWeek,month,agendaDay'
-                    
-                },
-                defaultView: 'agendaWeek',
-                events : [
-                    @foreach($turns as $turn) {
-                        title : "{{ $turn->name }}",
-                        start : '{{ $turn->turn_date }}',
-                        color : 'black',
-                        backgroundColor : ' #58d68d ',
-                        textColor: 'white',
-                        url : "{{ route('turns.show', $turn->id ) }}"
-                    },
-                    @endforeach
-                ],
-
-                dayClick: function(date, jsEvent, view){
-                    
-                    if(date.format() >= m.format('YYYY-MM-DD')){
-                        window.location.replace("turns/create?date="+date.format());
-                    }else{
-                        alert('Por Favor, elija una fecha correcta! Mayor o igual a ' + m.format('DD-MM-YYYY'))
-                    }
-                },
-
-                businessHours: [
-                    {
-                        start: '8:00', // hora final
-                        end: '18:00', // hora inicial
-                        dow: [ 1, 2, 3, 4, 5 ] // dias de semana, 0=Domingo
-                    },
-                    {
-                        start: '8:00', // hora final
-                        end: '12:00', // hora inicial
-                        dow: [ 6 ] // dias de semana, 0=Domingo
-                    },
-                ],
-                dayRender: function (date, cell) {
-                    if(date.format() < m.format('YYYY-MM-DD')){
-                        cell.css("background-color", " #f5b7b1");
-                    }
-                },
-            })
-        });
-    </script>
-@endsection('content')
+<div class="card bg-home" style="width: 100rem; background-color: #d5f5e3 ; ">
+    <div class="card-header">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <center><h1><span class="badge badge-pill badge-info">Inasistencias</span></h1></center>
+            </div>
+        </div>
+    </div>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    <table class="table table-bordered">
+        <tr>
+            <th>N° de DNI</th>
+            <th>Apellido</th>
+            <th>Nombres</th>
+            <th>Tipo de Licencia</th>
+            <th width="280px">Acciones
+                <a class="btn btn-warning icon-plus" data-toggle="modal" data-target="#search-modal"></a>
+            </th>
+        </tr>
+        @foreach ($assists as $assistance)
+        <tr>  
+            @foreach ($patient as $pat)
+                @if ($pat->id == $assistance->patient_id)
+                    <td>{{ $pat->dni }} </td>        
+                    <td>{{ $pat->lastname }} </td>
+                    <td>{{ $pat->firstname }} </td>
+                @endif
+            @endforeach
+            @foreach ($license as $lic)
+                @if ($lic->id == $assistance->license_id)
+                    <td>{{ $lic->name }} </td>
+                @endif
+            @endforeach
+            <td>
+                <a class="btn btn-primary btn-sm" href="{{ route('assists.show',$assistance->id) }}">
+                <i class="icon-eye"></i></a>
+                <a href="{{ route('assists.edit', $assistance->id) }}" class="btn btn-success btn-sm">
+                <i class="icon-pencil1"></i></a>
+                {!! Form::open(['method' => 'DELETE','route' => ['assists.destroy', $assistance->id],'style'=>'display:inline']) !!}
+                <button type="submit" class="btn btn-danger icon-trashcan"></button>
+                {!! Form::close() !!}
+            </td>
+        </tr>
+        @endforeach
+    </table>
+    {!! $assists->links() !!}
+    @include('user_admin.assists.search_patient')
+</div>
+@endsection

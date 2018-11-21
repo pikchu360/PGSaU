@@ -26,7 +26,4 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
 </a>
-<div id="editSlider">
-    <a href="{{ route('images.index') }}">Editar Slider</a>
-</div>
 <!-- End Carousel Controls -->

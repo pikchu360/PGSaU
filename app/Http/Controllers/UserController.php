@@ -13,7 +13,8 @@ class UserController extends Controller
     public function index(){
         $users = User::latest()->paginate(5);
         if( Auth::User()->role == 'admin' ){
-            return view('user_admin.users.index', compact('users'))->with('i', (request()->input('page', 1) - 1) * 5);
+            $roles = Role::all();
+            return view('user_admin.users.index', compact('users','roles'))->with('i', (request()->input('page', 1) - 1) * 5);
         }else{
             if(Auth::User()->role == 'health_agent' ){
                 return view('user_sanitary.users.index', compact('users'))->with('i', (request()->input('page', 1) - 1) * 5);

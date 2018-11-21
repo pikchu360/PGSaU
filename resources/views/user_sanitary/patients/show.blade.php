@@ -1,31 +1,41 @@
-@extends('home')
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Paciente</h2>
+<div class="modal fade" id="show" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Ficha Médica</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('patients.index') }}">Volver </a>
+            <div class="modal-body bg-light">
+               <div class="form-group">
+                    <label for="lastname" class="col-md-4 col-form-label text-md-right">Apellido:</label>
+                    <b id="p_lastname" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-md-4 col-form-label text-md-right">Nombre:</label>
+                    <b id="p_firstname" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="dni" class="col-md-4 col-form-label text-md-right">DNI:</label>
+                    <b id="p_dni" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-md-4 col-form-label text-md-right">Email:</label>
+                    <b id="p_email" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-md-4 col-form-label text-md-right">Dirección:</label>
+                    <b id="p_address" class="col-md-6"></b>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-md-4 col-form-label text-md-right">Telefono:</label>
+                    <b id="p_phone" class="col-md-6"></b>
+                </div>                           
+            </div>
+            <div class="modal-footer bg-dark">
+                <button type="button" class="btn btn-light text-primary" data-dismiss="modal">Aceptar</button>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Apellido:</strong>
-                {{ $patient->lastname }}
-            </div>
-            <div class="form-group">
-                <strong>Nombre:</strong>
-                {{ $patient->firstname }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                {{ $patient->email}}
-            </div>
-        </div>
-    </div>
-@endsection
+</div>

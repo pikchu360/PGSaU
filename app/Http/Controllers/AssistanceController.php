@@ -19,7 +19,7 @@ class AssistanceController extends Controller
             return view('user_admin.assists.index', compact('patient', 'assists', 'license'))->with('i', (request()->input('page', 1) - 1) * 5);
         }else{
             if(Auth::User()->role == 'health_agent' ){
-                return view('user_sanitary.assists.index', compact('assists'))->with('i', (request()->input('page', 1) - 1) * 5);
+                return view('user_sanitary.assists.index', compact('patient', 'assists', 'license'))->with('i', (request()->input('page', 1) - 1) * 5);
             }
             return view('user_assists.assists.index', compact('assists'))->with('i', (request()->input('page', 1) - 1) * 5);
         }
@@ -70,7 +70,7 @@ class AssistanceController extends Controller
             return view('user_admin.assists.show', compact('assistance','patient','license'));
         }else{
             if(Auth::User()->role == 'health_agent'){
-                return view('user_sanitary.assists.show', compact('assistance'));
+                return view('user_sanitary.assists.show', compact('assistance','patient','license'));
             }
         }
     }
@@ -84,7 +84,7 @@ class AssistanceController extends Controller
             return view('user_admin.assists.edit', compact('assistance','patient','license', 'license1'));
         }else{
             if(Auth::User()->role == 'health_agent'){
-                return view('user_sanitary.assists.edit', compact('assistance'));
+                return view('user_sanitary.assists.edit', compact('assistance','patient','license', 'license1'));
             }
         }
     }

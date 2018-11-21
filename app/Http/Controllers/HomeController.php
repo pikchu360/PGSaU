@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['admin', 'patient','health_agent']);
+        $request->user()->authorizeRoles(['admin', 'patient','health_agent','']);
         return view('home');
     }
 }

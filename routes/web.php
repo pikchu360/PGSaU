@@ -22,10 +22,23 @@ Route::get('/', 'PageController@welcome');
 });*/
 
 Auth::routes();
-
+Route::get('storage/{archivo}', function ($archivo) {
+    $files = Storage::allFiles(Auth::user()->id);
+     //verificamos si el archivo existe y lo retornamos
+     foreach( $files as $file){
+          if ($file == $archivo)
+          {
+              return Storage::response($archivo);
+             
+          }
+     //si no se encuentra lanzamos un error 404.
+        }
+ 
+});
+Route::post('storage/create', 'StorageController@save');
 Route::get('createInassist/{id}','AssistanceController@createInassist')->name('createInassist');
 
-Route::resource('images', 'ImagenController');
+Route::resource('imagenes', 'ImageController');
 
 Route::resource('users','UserController');
 Route::resource('patients','PatientController');

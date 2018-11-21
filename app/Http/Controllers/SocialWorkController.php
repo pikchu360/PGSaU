@@ -16,6 +16,8 @@ class SocialWorkController extends Controller
         }else{
             if( Auth::User()->role == 'health_agent'){
                 return view('user_sanitary.social_works.index', compact('sworks'))->with('i', (request()->input('page', 1) - 1) * 5);
+            }else{
+                return view('user_patients.social_works.index', compact('sworks'))->with('i', (request()->input('page', 1) - 1) * 5);
             }
         }
     }

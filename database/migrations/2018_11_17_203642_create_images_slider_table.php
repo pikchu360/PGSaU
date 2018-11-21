@@ -13,7 +13,7 @@ class CreateImagesSliderTable extends Migration
      */
     public function up()
     {
-        Schema::create('images_slider', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url');
             $table->string('name');
@@ -35,6 +35,6 @@ class CreateImagesSliderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images_slider');
+        Schema::dropIfExists('images');
     }
 }
