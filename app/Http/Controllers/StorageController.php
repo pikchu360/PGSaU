@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Image;
+use App\Assistance;
 
 class StorageController extends Controller
 {
@@ -37,6 +38,20 @@ class StorageController extends Controller
             $imagen->users_id = Auth::user()->id;
             $imagen->save();
         }
+        return \View::make('home');
+    }
+
+    public function saveCertificate(Request $request, $id)
+    {
+        $file = $request->file('file');
+        $nombre = $file->getClientOriginalName(); 
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+        $path = Storage::putFileAs('images/cert',  $file, Auth::user()->id.'_'.$nombre);
+        
+        $assist = Assistance::find($id);
+        $assist->url_certificate = 'app/'.$path;
+        $assist->save();
+        
         return \View::make('home');
     }
 }

@@ -25,6 +25,9 @@ class CreateAssistsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
 
+            $table->boolean('status_mail')->default(false);
+            $table->string('url_certificate')->nullable();
+            
             $table->timestamps();
         });
     }

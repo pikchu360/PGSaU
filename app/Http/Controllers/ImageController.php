@@ -24,8 +24,8 @@ class ImageController extends Controller
     public function update(Request $request, $id)
     {
         $imagene = Image::find($id);
-        $imagene->titulos = $request->input('title');
-        $imagene->descripcion = $request->input('description');
+        $imagene->title = $request->input('title');
+        $imagene->description = $request->input('description');
       //  $imagene->estado = $request->input('estado');
         $imagene->save();
         return redirect()->route('imagenes.index')->with('success','Actividad modificada successfully');

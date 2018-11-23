@@ -20,8 +20,9 @@ class AssistanceController extends Controller
         }else{
             if(Auth::User()->role == 'health_agent' ){
                 return view('user_sanitary.assists.index', compact('patient', 'assists', 'license'))->with('i', (request()->input('page', 1) - 1) * 5);
+            }else{
+                return view('user_patients.certificates.index');
             }
-            return view('user_assists.assists.index', compact('assists'))->with('i', (request()->input('page', 1) - 1) * 5);
         }
     }
 

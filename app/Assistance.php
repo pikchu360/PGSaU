@@ -12,5 +12,6 @@ class Assistance extends Model
         'license_id',
         'start_date',
         'end_date',
+        'status_mail',
     ];
 }

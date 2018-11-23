@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Patient;
+use App\Assistance;
+use Mail;
 
 class HomeController extends Controller
 {

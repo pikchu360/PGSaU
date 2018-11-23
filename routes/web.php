@@ -1,27 +1,12 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', 'PageController@welcome');
 
-/*Route::group(['middleware' => ['web']], function() {
-    Route::resource('patients','PatientController');
-    Route::POST('editPatient','PatientController@editPatient');
+Auth::routes(['verify'=>true]);
+Route::get('profile', function(){
+    return 'Éste es tu Perfil';
+})->middleware('verified');
 
-    //Route::resource('licenses', 'LicenseController');
-    //Route::POST('editLicense', 'LicenseController@editLicense');
-});*/
-
-Auth::routes();
 Route::get('storage/{archivo}', function ($archivo) {
     $files = Storage::allFiles(Auth::user()->id);
      //verificamos si el archivo existe y lo retornamos
@@ -35,6 +20,14 @@ Route::get('storage/{archivo}', function ($archivo) {
         }
  
 });
+
+// para ir a la vista que manda mail
+Route::get('sendMail', function () {
+    return view('sendMail');
+});
+// mail controller
+Route::get('absenceReminder','MailController@absenceReminder');
+
 Route::post('storage/create', 'StorageController@save');
 Route::get('createInassist/{id}','AssistanceController@createInassist')->name('createInassist');
 
